@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grammar Challenge - Grade 4</title>
+<style>
+:root{--bg:#0f1624;--card:#16203a;--gold:#e8b93c;--blue:#6b8be8;--green:#63cf72;--txt:#fff;--bd:#2a3556;--ok:#1f6b45;--bad:#7a2a35;box-sizing:border-box}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;font-weight:600}
+header{background:var(--blue);padding:calc(14px + env(safe-area-inset-top,0px)) 20px 14px;font-size:26px;font-weight:800}
+main{max-width:520px;margin:0 auto;padding:26px 18px calc(30px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:18px;text-align:center}
+.box{border:3px solid var(--gold);background:var(--card);border-radius:22px;padding:22px 16px}
+.verse{color:var(--blue);font-size:22px;line-height:2;margin:0 0 8px;font-family:'Amiri','Traditional Arabic',serif}
+.who{font-size:24px;font-weight:800;margin:6px 0}
+.num{color:#4aa35a;font-size:38px;font-weight:800;letter-spacing:2px;margin:4px 0}
+.lbl{font-size:22px;margin:6px 0 0}
+input{width:86%;margin:0 auto;font:inherit;font-size:24px;padding:16px;border-radius:14px;border:2px solid var(--bd);background:transparent;color:var(--txt);text-align:center}
+input::placeholder{color:#9aa3b5}
+button,a.b{font:inherit;font-weight:800;font-size:22px;border:0;border-radius:18px;padding:16px 28px;background:var(--blue);color:#fff;cursor:pointer;text-decoration:none;display:block}
+button:focus-visible,a.b:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.start{margin:0 auto;padding:16px 40px}
+.full{width:100%}
+.wa{background:var(--green);border-radius:0;color:#fff}
+.ch{width:100%;text-align:left;background:var(--card);border:2px solid var(--bd);display:flex;align-items:center;gap:14px}
+.ch small{display:block;color:#9aa3b5;font-weight:600;font-size:15px;margin-top:3px}
+.ch .s{margin-left:auto}
+.top{display:flex;justify-content:space-between;font-size:19px}
+.bar{height:10px;background:var(--bd);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--gold);transition:width .3s}
+.q{font-size:27px;font-weight:800;line-height:1.5;text-align:left;min-height:110px;display:flex;align-items:center}
+.q u{display:inline-block;min-width:80px;border-bottom:4px solid var(--gold);text-decoration:none;margin:0 4px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{background:var(--card);border:2px solid var(--bd);font-size:21px;padding:16px 8px}
+.opt.ok{background:var(--ok);border-color:var(--green)}
+.opt.no{background:var(--bad);border-color:#e8505b}
+.fb{min-height:30px;font-size:19px}
+.score{color:var(--gold);font-size:84px;font-weight:800;line-height:1.1}
+.pct{font-size:26px;margin:6px 0 14px}
+.tn{font-size:22px}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<header>Grammar Challenge - Grade 4</header>
+<main id="app"></main>
+<script>
+var D=[
+"They ___ their cars every Friday.|wash|washes|washing|washed",
+"The girls ___ their mother every day.|help|helps|helping|is helping",
+"Laila ___ plenty of water every morning.|drinks|drink|to drink|drinking",
+"I ___ early every night.|sleep|sleeping|sleeps|slept",
+"My brother ___ football every day.|plays|play|played|playing",
+"Children ___ to school early every day.|go|goes|going|to go",
+"She ___ her backpack every day.|carries|carry|carried|carrying",
+"The children ___ football every Monday.|play|plays|playing|played",
+"Mona and Menna ___ their teacher at school.|help|helped|helps|helping",
+"Omar ___ to his teacher carefully.|listens|listen|listening|listened",
+"Lara ___ the kitchen at night.|cleans|clean|cleaning|cleaned",
+"Many doctors ___ at the hospital.|work|works|working|to work",
+"Omar and Adham ___ breakfast at 7 a.m.|eat|eats|to eat|eating",
+"Many children ___ to play video games.|like|likes|to like|liked",
+"Sama ___ a book every day.|reads|read|is reading|to read",
+"He ___ TV at night.|watches|watch|watching|to watch",
+"The dog ___ fast.|runs|run|running|to run",
+"Karim and Omar ___ lunch at 3 p.m.|have|has|having|had",
+"The girls ___ tennis at the club on Fridays.|play|playing|plays|played",
+"My brother and I ___ TV in the evening.|watch|watched|watches|watching",
+"The nurse ___ sick people.|helps|help|helping|helped",
+"Amira ___ early every day.|sleeps|sleeping|slept|sleep",
+"She ___ her homework in the afternoon.|does|do|doing|did",
+"He ___ up at 6:30 a.m.|wakes|wake|waking|woke",
+"Mariam ___ my best friend.|is|are|am|be",
+"They ___ healthy and strong.|are|is|am|be",
+"Yara and Rana ___ their mother in the kitchen.|help|helps|helping|helped",
+"Healthy foods ___ me energy.|give|gives|giving|gave",
+"Farmers ___ many crops in Egypt.|grow|grows|growing|grew",
+"Some children ___ sports after school.|play|plays|playing|played",
+"The nurse ___ sick people.|helps|help|helping|helped",
+"We ___ our hands before eating.|wash|washes|washing|washed",
+"He ___ stories in English class.|reads|read|reading|to read",
+"She ___ for 9 hours every night.|sleeps|sleep|sleeping|slept",
+"I ___ the library every week.|visit|visits|visiting|visited",
+"They ___ a healthy breakfast every day.|eat|eats|eating|ate",
+"They ___ coffee.|like|likes|liking|liked",
+"I ___ my teeth every day.|brush|brushes|brushing|brushed",
+"Hassan and Hazem ___ to school by bus.|go|goes|going|went",
+"She ___ vitamins every morning.|takes|take|taking|took",
+"Sameh ___ vegetables every day.|eats|eat|eating|ate",
+"The nurse ___ sick people.|helps|help|helping|helped",
+"My sisters and I ___ our homework in the evening.|do|does|doing|did",
+"We ___ games during break time.|play|plays|playing|played",
+"They ___ stories in the library every Sunday.|read|reads|reading|readed",
+"Plants ___ water and sunlight to grow.|need|needs|needing|needed",
+"Adam ___ to school every day.|walks|walk|walking|walked",
+"The school bell ___ at 7:30 a.m.|rings|ring|ringing|rang",
+"She ___ sunny days.|enjoys|enjoy|enjoying|enjoyed",
+"My mom ___ delicious food.|cooks|cook|cooking|cooked",
+"The sun ___ in the east.|rises|rise|rising|rose",
+"Moaz and Malek ___ English in the evening.|study|studies|studying|studied",
+"Lama and Sama ___ cartoons at night.|watch|watches|watching|watched",
+"Birds ___ in the sky.|fly|flies|flying|flew",
+"My dad ___ newspapers every day.|reads|read|reading|readed",
+"I ___ up at 6 a.m.|wake|wakes|waking|woke",
+"My grandpa ___ to drink coffee in the morning.|likes|like|liking|liked",
+"She ___ like fast food.|doesn't|don't|hasn't|isn't",
+"Do you ___ your room every day?|clean|cleans|cleaning|cleaned",
+"I ___ get up early on the weekend.|don't|doesn't|am not|haven't"
+];
+var CH=[{n:"Challenge 1",t:"Little Adventurer",s:0},{n:"Challenge 2",t:"Smart Hero",s:20},{n:"Challenge 3",t:"Grammar King",s:40}];
+var app=document.getElementById('app'),name='',best={},cur,qs,i,score,locked;
+try{best=JSON.parse(localStorage.getItem('psbest')||'{}');name=localStorage.getItem('psname')||''}catch(e){}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
+function sh(a){a=a.slice();for(var k=a.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1)),t=a[k];a[k]=a[j];a[j]=t}return a}
+function stars(n){return n>=18?'\u2B50\u2B50\u2B50':n>=14?'\u2B50\u2B50':n>=10?'\u2B50':''}
+function welcome(){
+  app.innerHTML='<div class="box"><p class="verse">\uFD3F \u0625\u0650\u0646\u0651\u064E \u0627\u0644\u0644\u0651\u064E\u0647\u064E \u0648\u064E\u0645\u064E\u0644\u064E\u0627\u0626\u0650\u0643\u064E\u062A\u064E\u0647\u064F \u064A\u064F\u0635\u064E\u0644\u0651\u064F\u0648\u0646\u064E \u0639\u064E\u0644\u064E\u0649 \u0627\u0644\u0646\u0651\u064E\u0628\u0650\u064A\u0651\u0650 \u064A\u064E\u0627 \u0623\u064E\u064A\u0651\u064F\u0647\u064E\u0627 \u0627\u0644\u0651\u064E\u0630\u0650\u064A\u0646\u064E \u0622\u0645\u064E\u0646\u064F\u0648\u0627 \u0635\u064E\u0644\u0651\u064F\u0648\u0627 \u0639\u064E\u0644\u064E\u064A\u0652\u0647\u0650 \u0648\u064E\u0633\u064E\u0644\u0651\u0650\u0645\u064F\u0648\u0627 \u062A\u064E\u0633\u0652\u0644\u0650\u064A\u0645\u064B\u0627 \uFD3E</p><p class="who" dir="rtl">\u0637\u0644\u0627\u0628 \u0645\u0633\u062A\u0631 \u064A\u0648\u0633\u0641 \u0627\u0644\u0648\u0643\u064A\u0644</p><p class="num">01098102012</p></div><p class="lbl">Welcome! Write your name to start:</p><input id="nm" placeholder="Your name" maxlength="20" autocomplete="off" value="'+esc(name)+'"><button class="start" id="st">Start</button>';
+  document.getElementById('st').onclick=function(){var v=document.getElementById('nm').value.trim();if(!v){document.getElementById('nm').focus();return}name=v;try{localStorage.setItem('psname',v)}catch(e){}menu()};
+}
+function menu(){
+  var h='<p class="lbl">Hi '+esc(name)+'! Choose a challenge:</p>';
+  CH.forEach(function(c,k){var b=best[k];h+='<button class="ch" data-k="'+k+'"><span>'+c.n+' - '+c.t+'<small>Present Simple · 20 questions'+(b!=null?' · Best '+b+'/20':'')+'</small></span><span class="s">'+(b!=null?stars(b):'')+'</span></button>'});
+  h+='<button class="ch" id="chg" style="justify-content:center">Change name</button>';
+  app.innerHTML=h;
+  app.querySelectorAll('[data-k]').forEach(function(el){el.onclick=function(){start(+el.dataset.k)}});
+  document.getElementById('chg').onclick=welcome;
+}
+function start(k){cur=k;qs=sh(D.slice(CH[k].s,CH[k].s+20));i=0;score=0;show()}
+function show(){
+  var p=qs[i].split('|'),o=sh(p.slice(1));locked=false;
+  var h='<div class="top"><span>'+esc(name)+'</span><span>Score: '+score+'</span><span>'+(i+1)+'/20</span></div><div class="bar"><i style="width:'+(i/20*100)+'%"></i></div>';
+  h+='<div class="box q">'+esc(p[0]).replace('___','<u>&nbsp;&nbsp;&nbsp;&nbsp;</u>')+'</div><div class="opts">';
+  o.forEach(function(x){h+='<button class="opt" data-a="'+esc(x)+'">'+esc(x)+'</button>'});
+  h+='</div><div class="fb" id="fb" aria-live="polite"></div><div id="nx"></div>';
+  app.innerHTML=h;
+  app.querySelectorAll('.opt').forEach(function(b){b.onclick=function(){pick(b,p[1],p[0])}});
+}
+function pick(b,ans,sen){
+  if(locked)return;locked=true;
+  var ok=b.dataset.a===ans,fb=document.getElementById('fb');
+  app.querySelectorAll('.opt').forEach(function(x){if(x.dataset.a===ans)x.classList.add('ok')});
+  if(ok){score++;fb.style.color='var(--green)';fb.textContent='Correct! \u2705'}
+  else{b.classList.add('no');fb.style.color='#ff7b86';fb.textContent='Correct answer: '+sen.replace('___',ans)}
+  document.getElementById('nx').innerHTML='<button class="full" id="go">'+(i<19?'Next':'See my score')+'</button>';
+  document.getElementById('go').onclick=function(){i++;i<20?show():end()};
+}
+function end(){
+  if(best[cur]==null||score>best[cur]){best[cur]=score;try{localStorage.setItem('psbest',JSON.stringify(best))}catch(e){}}
+  var pc=Math.round(score/20*100),m=pc>=90?'Excellent work! \uD83C\uDFC6':pc>=70?'Great job! \uD83C\uDF1F':pc>=50?'Good, keep going! \uD83D\uDC4D':'Keep trying, you can do it! \uD83D\uDCDA';
+  var t='\uD83C\uDFAF Grammar Challenge - Grade 4\n\uD83D\uDC64 Name: '+name+'\n\uD83D\uDCD8 Topic: Present Simple - '+CH[cur].n+'\n\u2705 Score: '+score+'/20 ('+pc+'%)';
+  app.innerHTML='<div class="box"><div class="score">'+score+'/20</div><div class="pct">'+pc+'% \u2014 '+m+'</div><div class="tn">Present Simple</div><div class="tn">'+CH[cur].n+'</div></div><a class="b wa" target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent(t)+'">\uD83D\uDCF2 Share score on WhatsApp</a><button class="full" id="again">Try again</button><button class="full" id="mn">Choose another challenge</button>';
+  document.getElementById('again').onclick=function(){start(cur)};
+  document.getElementById('mn').onclick=menu;
+}
+welcome();
+</script>
+</body>
+</html>
